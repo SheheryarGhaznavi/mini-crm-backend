@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
+    public function login(Request $request)
     {
         $user= User::where('email', $request->email)->first();
 

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,18 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
+/// LOGIN
+Route::post("login",[UserController::class,'login']);
 
 
 Route::group(['middleware' => 'auth:sanctum'], function(){
 
+    Route::resource("companies", CompanyController::class);
+    Route::resource("employees", EmployeeController::class);
+
 });
 
 
-Route::post("login",[UserController::class,'index']);
 
 
