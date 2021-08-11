@@ -21,12 +21,12 @@ use Illuminate\Support\Facades\Route;
 Route::post("login",[UserController::class,'login']);
 
 
-Route::group(['middleware' => 'auth:sanctum'], function(){
-
-    Route::resource("companies", CompanyController::class);
-    Route::resource("employees", EmployeeController::class);
-
-});
+Route::group(['middleware' => 'auth:sanctum'], 
+    function() {
+        Route::apiResource("companies", CompanyController::class);
+        Route::apiResource("employees", EmployeeController::class);
+    }
+);
 
 
 
